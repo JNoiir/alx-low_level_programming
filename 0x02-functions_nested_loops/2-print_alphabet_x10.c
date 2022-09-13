@@ -3,7 +3,7 @@
  * main - entry point
  *
  * print_alphabet_x10 - prints alphabet 10 times
- *
+ * @c: Character in ASCII
  * Return: Always 0 (success)
  */
 void print_alphabet_x10(void)
