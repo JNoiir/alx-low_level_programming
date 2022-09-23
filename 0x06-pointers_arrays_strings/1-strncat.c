@@ -6,7 +6,7 @@
  * @n: number of values to concatenate
  * Description: concatenates n number of values from src to end of dest
  * Return: pointer to dest
- **/
+ */
 
 char *_strncat(char *dest, char *src, int n)
 {
