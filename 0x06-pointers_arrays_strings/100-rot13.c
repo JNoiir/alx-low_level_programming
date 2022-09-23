@@ -1,68 +1,20 @@
-#include <stdio.h>
 #include "main.h"
 /**
- * exponent - x to the power of y
- * @x: base number
- * @y: exponent
- * Description: calcuates x^y
- * Return: x^y
- *
+ * rot13 - encode string with rot13
+ * @src: string to encode
+ * Return: string
  **/
 
-int exponent(int x, int y)
+char *rot13(char *src)
 {
-	int power;
+	char c[] = {"NOPQRSTUVWXYZABCDEFGHIJKLM[\\]^_`nopqrstuvwxyzabcdefghijklm"};
 
-	power = x;
+	int i;
 
-	if (x == 0)
-		return (0);
-	if (y == 0)
-		return (1);
-
-	while (y >= 2)
+	for (i = 0; src[i] != '\0'; i++)
 	{
-		power  = power * x;
-		y--;
+		if (src[i] >= 'A' && src[i] <= 'z')
+			src[i] = c[src[i] - 'A'];
 	}
-	return (power);
-}
-
-/**
- * print_number - print an int using only _putchar
- * @number: int to be printed by function
- *
- * Return: nothing
- **/
-
-void print_number(int number)
-{
-	int size, digit, counter, sign;
-
-	sign = 1;
-	digit = 0;
-	size = 1;
-	counter = number;
-
-	if (number < 0)
-	{
-		_putchar('-');
-		sign = -1;
-	}
-
-	for (; counter >= 10 || counter <= -10; size++)
-	{
-		counter = counter / 10;
-	}
-
-	counter = number;
-
-	while (size >= 2)
-	{
-		digit = (counter / exponent(10, size - 1)) * sign;
-		_putchar(digit + '0');
-		counter = counter % exponent(10, size - 1);
-		size--;
-	}
-	_putchar(sign * counter % 10 + '0');
+	return (src);
 }
