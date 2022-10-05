@@ -2,29 +2,41 @@
 #include <stdlib.h>
 #include "main.h"
 /**
- * _strdup - duplicate to new memory space location
- * @str: char
- * Return: 0
- */
+ * _strlen - returns the length of the string
+ * @s: input string to count
+ * Description: returns the length of a given string
+ * Return: length of string as int
+ **/
+int _strlen(char *s)
+{
+	unsigned int i;
+
+	for (i = 0; s[i] != '\0'; i++)
+		;
+	return (i + 1);
+}
+/**
+ * _strdup - duplicate string
+ * @str: source string
+ * Description: duplicate string
+ * Return: pointer to string, NULL if fail
+ **/
 char *_strdup(char *str)
 {
-	int i, z;
-	char *a;
+	char *dest;
+	unsigned int i;
 
 	if (str == NULL)
 		return (NULL);
 
-	for (z = 0; z <= *str; z++)
-	{
-	}
+	dest = (char *)malloc((_strlen(str)) * sizeof(char));
 
-	z += 1;
-	a = malloc(sizeof(char) * z);
-
-	for (i = 0; i < z; i++)
-		z[i] = str[i];
-
-	if (a == NULL)
+	if (dest == NULL)
 		return (NULL);
-	return (a);
+
+	for (i = 0; str[i] != '\0'; i++)
+		dest[i] = str[i];
+	dest[i] = str[i];
+
+	return (dest);
 }
